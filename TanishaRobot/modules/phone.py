@@ -40,7 +40,7 @@ def phone(update, context):
     d = "● ʟᴏᴄᴀᴛɪᴏɴ ➥  " + str(location)
     e = "● ᴄᴀʀʀɪᴇʀ ➥  " + str(carrier)
     f = "● ᴅᴇᴠɪᴄᴇ ➥  " + str(line_type)
-    h = "❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥  ๛ᴀ ᴠ ɪ s ʜ ᴀ ࿐"
+    h = "❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥  ๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ࿐"
     g = f"{bb}\n\n{aa}\n{a}\n{b}\n{c}\n{d}\n{e}\n{f}\n\n{h}"
     send_message(update.effective_message, g)
 

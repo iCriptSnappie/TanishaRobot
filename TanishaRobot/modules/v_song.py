@@ -15,7 +15,7 @@ from TanishaRobot import pbot
 
 EVAA = [
     [
-        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/avishaxbot?startgroup=true"),
+        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/TanishaRobot?startgroup=true"),
     ],
 ]
 
@@ -89,7 +89,7 @@ async def ytmusic(client, message: Message):
         return
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"❖ **sᴏɴɢ ᴛɪᴛʟᴇ ➥** [{thum}]({mo})\n\n● **ᴄʜᴀɴɴᴇʟ ➥** {thums}\n● **sᴇᴀʀᴄʜᴇᴅ ➥** {urlissed}\n\n❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ ๛ᴀ ᴠ ɪ s ʜ ᴀ ࿐"
+    capy = f"❖ **sᴏɴɢ ᴛɪᴛʟᴇ ➥** [{thum}]({mo})\n\n● **ᴄʜᴀɴɴᴇʟ ➥** {thums}\n● **sᴇᴀʀᴄʜᴇᴅ ➥** {urlissed}\n\n❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ ๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ࿐"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),

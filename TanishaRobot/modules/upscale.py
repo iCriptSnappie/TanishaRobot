@@ -5,7 +5,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 EVAA = [
     [
-        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/avishaxbot?startgroup=true"),
+        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/TanishaRobot?startgroup=true"),
     ],
 ]
 
@@ -47,7 +47,7 @@ async def upscale_image(client, message):
             await client.send_document(
                 message.chat.id,
                 document=upscaled_file_path,
-                caption=f"⬤ **ᴜᴘsᴄᴀʟᴇᴅ ɪᴍᴀɢᴇ ʙʏ ➥** [๛ᴀ ᴠ ɪ s ʜ ᴀ ࿐](https://t.me/Avishaxbot)", reply_markup=InlineKeyboardMarkup(EVAA),
+                caption=f"⬤ **ᴜᴘsᴄᴀʟᴇᴅ ɪᴍᴀɢᴇ ʙʏ ➥** [๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ࿐](https://t.me/TanishaRobot)", reply_markup=InlineKeyboardMarkup(EVAA),
             )
         else:
             await message.reply_text("⬤ ᴘʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀɴ ɪᴍᴀɢᴇ ᴛᴏ ᴜᴘsᴄᴀʟᴇ ɪᴛ.")

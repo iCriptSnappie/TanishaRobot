@@ -9,7 +9,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 EVAA = [
     [
-        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/avishaxbot?startgroup=true"),
+        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/TanishaRobot?startgroup=true"),
     ],
 ]
 
@@ -42,7 +42,7 @@ def qr_handler(client, message: Message):
     if len(command_text) > 1:
         input_text = " ".join(command_text[1:])
         qr_image = generate_qr_code(input_text)
-        message.reply_photo(qr_image, caption="❖ ǫʀ ɢᴇɴ ʙʏ ➥ ๛ᴀ ᴠ ɪ s ʜ ᴀ ࿐ ", reply_markup=InlineKeyboardMarkup(EVAA),)
+        message.reply_photo(qr_image, caption="❖ ǫʀ ɢᴇɴ ʙʏ ➥ ๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ࿐ ", reply_markup=InlineKeyboardMarkup(EVAA),)
 
     else:
         message.reply_text("⬤ Please provide the text for the QR code after the command. Example usage ➥ /qr text")

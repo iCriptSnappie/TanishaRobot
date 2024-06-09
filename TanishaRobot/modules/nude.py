@@ -6,7 +6,7 @@ from TanishaRobot import pbot as app
 
 EVAA = [
     [
-        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/avishaxbot?startgroup=true"),
+        InlineKeyboardButton(text="ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ", url=f"https://t.me/TanishaRobot?startgroup=true"),
     ],
 ]
 
@@ -20,7 +20,7 @@ async def nudes(_,message):
             ]
         ))
     x = requests.get('https://api.night-api.com/images/nsfw',headers={"authorization": "pUieNWJRIs-2Q073qw9dddUcM3Vncmn-eusGidDCIw"})
-    await message.reply_photo(x.json()["content"]["url"], caption=f"❖ ɴᴜᴅᴇ ᴘɪᴄs ʙʏ ➥ ๛ᴀ ᴠ ɪ s ʜ ᴀ ࿐", reply_markup=InlineKeyboardMarkup(EVAA),)
+    await message.reply_photo(x.json()["content"]["url"], caption=f"❖ ɴᴜᴅᴇ ᴘɪᴄs ʙʏ ➥ ๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ࿐", reply_markup=InlineKeyboardMarkup(EVAA),)
 
 
 __mod_name__ = "ɴᴜᴅᴇ"

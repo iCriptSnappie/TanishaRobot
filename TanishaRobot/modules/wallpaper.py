@@ -21,7 +21,7 @@ async def wall(_, message: Message):
         ran = random.randint(0, 3)
         await message.reply_photo(
             photo=url[ran]["imageUrl"],
-            caption=f"⬤ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ ๛ᴀ ᴠ ɪ s ʜ ᴀ ࿐",
+            caption=f"⬤ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ ๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ࿐",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton("ʟɪɴᴋ", url=url[ran]["imageUrl"])],
