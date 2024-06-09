@@ -101,7 +101,7 @@ async def disable_ws(event):
         return
     rmnightmode(str(event.chat_id))
     await event.reply(
-        f"❖ ɴɪɢʜᴛ ᴍᴏᴅᴇ ᴏғғ ᴀᴛ ᴛʜɪs ɢʀᴏᴜᴘ\n\n● ʀᴇᴍᴏᴠᴇᴅ ᴄʜᴀᴛ ➥ `{event.chat.title}` \n● ɢʀᴏᴜᴘ ɪᴅ ➥  `{event.chat_id}` \n\n❖ ᴘᴏᴡᴇʀᴅ ʙʏ ➥ [๛ᴀ ᴠ ɪ s ʜ ᴀ ♡゙](https://t.me/the_friendz)", buttons=button_row
+        f"❖ ɴɪɢʜᴛ ᴍᴏᴅᴇ ᴏғғ ᴀᴛ ᴛʜɪs ɢʀᴏᴜᴘ\n\n● ʀᴇᴍᴏᴠᴇᴅ ᴄʜᴀᴛ ➥ `{event.chat.title}` \n● ɢʀᴏᴜᴘ ɪᴅ ➥  `{event.chat_id}` \n\n❖ ᴘᴏᴡᴇʀᴅ ʙʏ ➥ [๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ♡゙](https://t.me/ll_Feelings_ll)", buttons=button_row
     )
 
 
@@ -113,7 +113,7 @@ async def job_close():
         try:
             await tbot.send_message(
                 int(warner.chat_id),
-                f"❖ ɢʀᴏᴜᴘ ɪꜱ ᴄʟᴏꜱɪɴɢ, ɢᴏᴏᴅ ɴɪɢʜᴛ ᴇᴠᴇʀʏᴏɴᴇ !\n\n● ᴍᴀʏ ᴛʜᴇ ᴀɴɢᴇʟs ғʀᴏᴍ ʜᴇᴀᴠᴇɴ ʙʀɪɴɢ ᴛʜᴇ sᴡᴇᴇᴛᴇsᴛ ᴏғ ᴀʟʟ ᴅʀᴇᴀᴍs ғᴏʀ ʏᴏᴜ. ᴍᴀʏ ʏᴏᴜ ʜᴀᴠᴇ ʟᴏɴɢ ᴀɴᴅ ʙʟɪssғᴜʟ sʟᴇᴇᴘ ғᴜʟʟ ᴏғ ʜᴀᴘᴘʏ ᴅʀᴇᴀᴍs.\n\n❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ [๛ᴀ ᴠ ɪ s ʜ ᴀ ♡゙](https://t.me/the_friendz)",buttons=button_row)
+                f"❖ ɢʀᴏᴜᴘ ɪꜱ ᴄʟᴏꜱɪɴɢ, ɢᴏᴏᴅ ɴɪɢʜᴛ ᴇᴠᴇʀʏᴏɴᴇ !\n\n● ᴍᴀʏ ᴛʜᴇ ᴀɴɢᴇʟs ғʀᴏᴍ ʜᴇᴀᴠᴇɴ ʙʀɪɴɢ ᴛʜᴇ sᴡᴇᴇᴛᴇsᴛ ᴏғ ᴀʟʟ ᴅʀᴇᴀᴍs ғᴏʀ ʏᴏᴜ. ᴍᴀʏ ʏᴏᴜ ʜᴀᴠᴇ ʟᴏɴɢ ᴀɴᴅ ʙʟɪssғᴜʟ sʟᴇᴇᴘ ғᴜʟʟ ᴏғ ʜᴀᴘᴘʏ ᴅʀᴇᴀᴍs.\n\n❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ [๛ᴛ ᴀ ɴ ɪ s ʜ ᴀ ♡゙](https://t.me/ll_Feelings_ll)",buttons=button_row)
             await tbot(
                 functions.messages.EditChatDefaultBannedRightsRequest(
                     peer=int(warner.chat_id), banned_rights=hehes
@@ -137,7 +137,7 @@ async def job_open():
         try:
             await tbot.send_message(
                 int(warner.chat_id),
-                f"❖ ɢʀᴏᴜᴘ ɪꜱ ᴏᴘᴇɴɪɴɢ, ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ ᴇᴠᴇʀʏᴏɴᴇ !\n\n● ᴍᴀʏ ᴛʜɪs ᴅᴀʏ ᴄᴏᴍᴇ ᴡɪᴛʜ ᴀʟʟ ᴛʜᴇ ʟᴏᴠᴇ ʏᴏᴜʀ ʜᴇᴀʀᴛ ᴄᴀɴ ʜᴏʟᴅ ᴀɴᴅ ʙʀɪɴɢ ʏᴏᴜ ᴇᴠᴇʀʏ sᴜᴄᴄᴇss ʏᴏᴜ ᴅᴇsɪʀᴇ. ᴍᴀʏ ᴇᴀᴄʜ ᴏғ ʏᴏᴜʀ ғᴏᴏᴛsᴛᴇᴘs ʙʀɪɴɢ ᴊᴏʏ ᴛᴏ ᴛʜᴇ ᴇᴀʀᴛʜ ᴀɴᴅ ʏᴏᴜʀsᴇʟғ. ɪ ᴡɪsʜ ʏᴏᴜ ᴀ ᴍᴀɢɪᴄᴀʟ ᴅᴀʏ ᴀɴᴅ ᴀ ᴡᴏɴᴅᴇʀғᴜʟ ʟɪғᴇ ᴀʜᴇᴀᴅ.\n\n❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ [๛ɴ ʏ ᴋ ᴀ ᴀ ♡゙](https://t.me/the_friendz)",buttons=button_row)
+                f"❖ ɢʀᴏᴜᴘ ɪꜱ ᴏᴘᴇɴɪɴɢ, ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ ᴇᴠᴇʀʏᴏɴᴇ !\n\n● ᴍᴀʏ ᴛʜɪs ᴅᴀʏ ᴄᴏᴍᴇ ᴡɪᴛʜ ᴀʟʟ ᴛʜᴇ ʟᴏᴠᴇ ʏᴏᴜʀ ʜᴇᴀʀᴛ ᴄᴀɴ ʜᴏʟᴅ ᴀɴᴅ ʙʀɪɴɢ ʏᴏᴜ ᴇᴠᴇʀʏ sᴜᴄᴄᴇss ʏᴏᴜ ᴅᴇsɪʀᴇ. ᴍᴀʏ ᴇᴀᴄʜ ᴏғ ʏᴏᴜʀ ғᴏᴏᴛsᴛᴇᴘs ʙʀɪɴɢ ᴊᴏʏ ᴛᴏ ᴛʜᴇ ᴇᴀʀᴛʜ ᴀɴᴅ ʏᴏᴜʀsᴇʟғ. ɪ ᴡɪsʜ ʏᴏᴜ ᴀ ᴍᴀɢɪᴄᴀʟ ᴅᴀʏ ᴀɴᴅ ᴀ ᴡᴏɴᴅᴇʀғᴜʟ ʟɪғᴇ ᴀʜᴇᴀᴅ.\n\n❖ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➥ [๛ɴ ʏ ᴋ ᴀ ᴀ ♡゙](https://t.me/ll_Feelings_ll)",buttons=button_row)
             await tbot(
                 functions.messages.EditChatDefaultBannedRightsRequest(
                     peer=int(warner.chat_id), banned_rights=openhehe
