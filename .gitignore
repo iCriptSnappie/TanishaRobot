@@ -1,15 +1,15 @@
 # Config files, logs and stuff
-AvishaRobot/modules/helper_funcs/temp.txt
-AvishaRobot/elevated_users.json
-AvishaRobot/config.py
-AvishaRobot/config.ini
+TanishaRobot/modules/helper_funcs/temp.txt
+TanishaRobot/elevated_users.json
+TanishaRobot/config.py
+TanishaRobot/config.ini
 log.txt
 kangsticker.png
 updates.txt
 
 # Session files
-AvishaRobot/*.session
-AvishaRobot/*.session-journal
+TanishaRobot/*.session
+TanishaRobot/*.session-journal
 Avisha.session-journal
 *.session
 

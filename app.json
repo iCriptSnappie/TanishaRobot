@@ -8,7 +8,7 @@
        "group",
        "manager"
     ],   
- "repository": "https://github.com/LOCO-PILOT/AvishaRobot",
+ "repository": "https://github.com/LOCO-PILOT/TanishaRobot",
  "stack": "heroku-22",
  "addons": [
     {
