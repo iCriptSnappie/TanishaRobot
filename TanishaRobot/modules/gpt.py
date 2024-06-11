@@ -4,17 +4,23 @@ from TanishaRobot.events import register
 
 GPT_API_URL = "https://chatgpt.apinepdev.workers.dev"
 
-
-@register(pattern="^/gpt (.*)")
+@register(pattern="^/gpt(.*)")
 async def chat_gpt(event):
     if event.fwd_from:
         return
 
-    query = event.pattern_match.group(1)
+    # Get the query from the command or from the replied message
+    query = event.pattern_match.group(1).strip()
+
+    if event.is_reply:
+        # If the message is a reply, get the message text from the replied message
+        reply_message = await event.get_reply_message()
+        query = reply_message.text
 
     if query:
-        # Send "Please wait" message
+        # Send "Please wait" message and start typing action
         processing_message = await event.reply("💭")
+        await tbot.send_action(event.chat_id, "typing")
 
         try:
             # Make a request to GPT API
@@ -47,5 +53,4 @@ async def chat_gpt(event):
     else:
         # Provide information about the correct command format
         await event.reply("⬤ ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ǫᴜᴇsᴛɪᴏɴ ᴀғᴛᴇʀ /solve ᴄᴏᴍᴍᴀɴᴅ.\n\n● ғᴏʀ ᴇxᴀᴍᴘʟᴇ ➥ /gpt ᴡʜᴀᴛ ɪs ᴛʜᴇ ᴠᴀʟᴜᴇ ᴏғ sɪɴ 60° ?")
-
 
