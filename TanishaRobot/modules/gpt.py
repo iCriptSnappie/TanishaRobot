@@ -20,7 +20,6 @@ async def chat_gpt(event):
     if query:
         # Send "Please wait" message and start typing action
         processing_message = await event.reply("💭")
-        await tbot.send_action(event.chat_id, "typing")
 
         try:
             # Make a request to GPT API
