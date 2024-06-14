@@ -190,8 +190,8 @@ async def generate_couple(message, user1_id_or_username=None, user2_id_or_userna
 
         draw = ImageDraw.Draw(img)
 
-        img.paste(img1, (120, 194), img1)
-        img.paste(img2, (780, 196), img2)
+        img.paste(img1, (91, 215), img1)
+        img.paste(img2, (805, 215), img2)
 
         img.save(f'test_{cid}.png')
     
