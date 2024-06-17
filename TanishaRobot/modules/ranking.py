@@ -75,9 +75,16 @@ async def today_(_, message):
 
             for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
                 try:
-                    user_name = (await app.get_users(user_id)).first_name
+                    user = await app.get_users(user_id)
+                    user_name = user.first_name
+                    # Store user info in the database for future reference
+                    collection.update_one({"_id": user_id}, {"$set": {"first_name": user_name}}, upsert=True)
                 except Exception as e:
-                    user_name = "Unknown"
+                    user_data_from_db = collection.find_one({"_id": user_id})
+                    if user_data_from_db:
+                        user_name = user_data_from_db.get("first_name", "Unknown User")
+                    else:
+                        user_name = "Unknown User"
                     print(f"Error fetching user details for user_id {user_id}: {e}")
                 user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
                 response += user_info
@@ -106,9 +113,16 @@ async def ranking(_, message):
         user_id = member["_id"]
         total_messages = member["total_messages"]
         try:
-            user_name = (await app.get_users(user_id)).first_name
+            user = await app.get_users(user_id)
+            user_name = user.first_name
+            # Store user info in the database for future reference
+            collection.update_one({"_id": user_id}, {"$set": {"first_name": user_name}}, upsert=True)
         except Exception as e:
-            user_name = "Unknown"
+            user_data_from_db = collection.find_one({"_id": user_id})
+            if user_data_from_db:
+                user_name = user_data_from_db.get("first_name", "Unknown User")
+            else:
+                user_name = "Unknown User"
             print(f"Error fetching user details for user_id {user_id}: {e}")
 
         user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
@@ -136,9 +150,16 @@ async def today_rank(_, query):
             response = "⬤ 📈 ᴛᴏᴅᴀʏ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ\n\n"
             for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
                 try:
-                    user_name = (await app.get_users(user_id)).first_name
+                    user = await app.get_users(user_id)
+                    user_name = user.first_name
+                    # Store user info in the database for future reference
+                    collection.update_one({"_id": user_id}, {"$set": {"first_name": user_name}}, upsert=True)
                 except Exception as e:
-                    user_name = "Unknown"
+                    user_data_from_db = collection.find_one({"_id": user_id})
+                    if user_data_from_db:
+                        user_name = user_data_from_db.get("first_name", "Unknown User")
+                    else:
+                        user_name = "Unknown User"
                     print(f"Error fetching user details for user_id {user_id}: {e}")
                 user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
                 response += user_info
@@ -167,9 +188,16 @@ async def overall_rank(_, query):
         user_id = member["_id"]
         total_messages = member["total_messages"]
         try:
-            user_name = (await app.get_users(user_id)).first_name
+            user = await app.get_users(user_id)
+            user_name = user.first_name
+            # Store user info in the database for future reference
+            collection.update_one({"_id": user_id}, {"$set": {"first_name": user_name}}, upsert=True)
         except Exception as e:
-            user_name = "Unknown"
+            user_data_from_db = collection.find_one({"_id": user_id})
+            if user_data_from_db:
+                user_name = user_data_from_db.get("first_name", "Unknown User")
+            else:
+                user_name = "Unknown User"
             print(f"Error fetching user details for user_id {user_id}: {e}")
 
         user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
@@ -191,3 +219,6 @@ __help__ = """
 ⬤ /today *➥* ᴛᴏᴅᴀʏ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ ᴜsᴇʀs ᴍᴇssᴀɢᴇs.
 ⬤ /ranking *➥* ᴜsᴇʀs ʀᴀɴᴋɪɴɢ sʏsᴛᴇᴍ.
 """
+
+if __name__ == "__main__":
+    app.run()
