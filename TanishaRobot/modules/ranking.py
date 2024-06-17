@@ -35,15 +35,6 @@ MISHI = [
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg"
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
 ]
 
 # Watcher for today's messages
@@ -90,11 +81,16 @@ async def today_(_, message):
                     print(f"Error fetching user details for user_id {user_id}: {e}")
                 user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
                 response += user_info
+
             button = InlineKeyboardMarkup(
                 [[    
                    InlineKeyboardButton("ᴏᴠᴇʀᴀʟʟ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ", callback_data="overall"),
                 ]])
-            await message.reply_photo(random.choice(MISHI), caption=response, reply_markup=button)
+            try:
+                await message.reply_photo(random.choice(MISHI), caption=response, reply_markup=button)
+            except Exception as e:
+                print(f"Error sending photo: {e}")
+                await message.reply_text(response, reply_markup=button)
         else:
             await message.reply_text("❅ ɴᴏ ᴅᴀᴛᴀ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛᴏᴅᴀʏ.")
     else:
@@ -117,11 +113,16 @@ async def ranking(_, message):
 
         user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
         response += user_info 
+
     button = InlineKeyboardMarkup(
             [[    
                InlineKeyboardButton("ᴛᴏᴅᴀʏ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ", callback_data="today"),
             ]])
-    await message.reply_photo(random.choice(MISHI), caption=response, reply_markup=button)
+    try:
+        await message.reply_photo(random.choice(MISHI), caption=response, reply_markup=button)
+    except Exception as e:
+        print(f"Error sending photo: {e}")
+        await message.reply_text(response, reply_markup=button)
 
 # Callback query handler for today's leaderboard
 @app.on_callback_query(filters.regex("today"))
@@ -141,11 +142,16 @@ async def today_rank(_, query):
                     print(f"Error fetching user details for user_id {user_id}: {e}")
                 user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
                 response += user_info
+
             button = InlineKeyboardMarkup(
                 [[    
                    InlineKeyboardButton("ᴏᴠᴇʀᴀʟʟ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ", callback_data="overall"),
                 ]])
-            await query.message.edit_text(response, reply_markup=button)
+            try:
+                await query.message.edit_text(response, reply_markup=button)
+            except Exception as e:
+                print(f"Error editing message: {e}")
+                await query.message.reply_text(response, reply_markup=button)
         else:
             await query.answer("❅ ɴᴏ ᴅᴀᴛᴀ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛᴏᴅᴀʏ.")
     else:
@@ -172,7 +178,11 @@ async def overall_rank(_, query):
             [[    
                InlineKeyboardButton("ᴛᴏᴅᴀʏ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ", callback_data="today"),
             ]])
-    await query.message.edit_text(response, reply_markup=button)
+    try:
+        await query.message.edit_text(response, reply_markup=button)
+    except Exception as e:
+        print(f"Error editing message: {e}")
+        await query.message.reply_text(response, reply_markup=button)
 
 __mod_name__ = "ʀᴀɴᴋɪɴɢ"
 
