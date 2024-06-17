@@ -1,4 +1,4 @@
-from pyrogram import filters
+from pyrogram import filters, Client
 from pymongo import MongoClient
 from TanishaRobot import pbot as app
 from TanishaRobot import MONGO_DB_URI
@@ -12,24 +12,20 @@ from typing import Union
 
 import asyncio
 import random
-from pyrogram import Client, filters
 import requests
 import os
-import time 
-from pyrogram import filters
+import time
 from pyrogram.enums import ChatType
-from pyrogram.types import InlineKeyboardMarkup, Message
 
-
-
+# MongoDB client setup
 mongo_client = MongoClient(MONGO_DB_URI)
 db = mongo_client["natu_rankings"]
 collection = db["ranking"]
 
 user_data = {}
-
 today = {}
 
+# Images list
 MISHI = [
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
@@ -48,12 +44,9 @@ MISHI = [
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
     "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
-    "https://telegra.ph/file/a6a5b78007e4ca766794a.jpg",
 ]
 
-
-#watcher
-
+# Watcher for today's messages
 @app.on_message(filters.group & filters.group, group=6)
 def today_watcher(_, message):
     chat_id = message.chat.id
@@ -68,7 +61,7 @@ def today_watcher(_, message):
         else:
             today[chat_id][user_id]["total_messages"] = 1
 
-
+# General watcher
 @app.on_message(filters.group & filters.group, group=11)
 def _watcher(_, message):
     user_id = message.from_user.id    
@@ -76,8 +69,7 @@ def _watcher(_, message):
     user_data[user_id]["total_messages"] += 1    
     collection.update_one({"_id": user_id}, {"$inc": {"total_messages": 1}}, upsert=True)
 
-# ------------------- ranks ------------------ #          
-
+# Command to display today's leaderboard
 @app.on_message(filters.command("today"))
 async def today_(_, message):
     chat_id = message.chat.id
@@ -93,8 +85,9 @@ async def today_(_, message):
             for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
                 try:
                     user_name = (await app.get_users(user_id)).first_name
-                except:
+                except Exception as e:
                     user_name = "Unknown"
+                    print(f"Error fetching user details for user_id {user_id}: {e}")
                 user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
                 response += user_info
             button = InlineKeyboardMarkup(
@@ -107,7 +100,7 @@ async def today_(_, message):
     else:
         await message.reply_text("❅ ɴᴏ ᴅᴀᴛᴀ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛᴏᴅᴀʏ.")
 
-
+# Command to display overall ranking
 @app.on_message(filters.command("ranking"))
 async def ranking(_, message):
     top_members = collection.find().sort("total_messages", -1).limit(10)
@@ -118,8 +111,9 @@ async def ranking(_, message):
         total_messages = member["total_messages"]
         try:
             user_name = (await app.get_users(user_id)).first_name
-        except:
+        except Exception as e:
             user_name = "Unknown"
+            print(f"Error fetching user details for user_id {user_id}: {e}")
 
         user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
         response += user_info 
@@ -129,10 +123,7 @@ async def ranking(_, message):
             ]])
     await message.reply_photo(random.choice(MISHI), caption=response, reply_markup=button)
 
-
-
-# -------------------- regex -------------------- # 
-
+# Callback query handler for today's leaderboard
 @app.on_callback_query(filters.regex("today"))
 async def today_rank(_, query):
     chat_id = query.message.chat.id
@@ -145,8 +136,9 @@ async def today_rank(_, query):
             for idx, (user_id, total_messages) in enumerate(sorted_users_data, start=1):
                 try:
                     user_name = (await app.get_users(user_id)).first_name
-                except:
+                except Exception as e:
                     user_name = "Unknown"
+                    print(f"Error fetching user details for user_id {user_id}: {e}")
                 user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
                 response += user_info
             button = InlineKeyboardMarkup(
@@ -159,8 +151,7 @@ async def today_rank(_, query):
     else:
         await query.answer("❅ ɴᴏ ᴅᴀᴛᴀ ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛᴏᴅᴀʏ.")
 
-
-
+# Callback query handler for overall leaderboard
 @app.on_callback_query(filters.regex("overall"))
 async def overall_rank(_, query):
     top_members = collection.find().sort("total_messages", -1).limit(10)
@@ -171,8 +162,9 @@ async def overall_rank(_, query):
         total_messages = member["total_messages"]
         try:
             user_name = (await app.get_users(user_id)).first_name
-        except:
+        except Exception as e:
             user_name = "Unknown"
+            print(f"Error fetching user details for user_id {user_id}: {e}")
 
         user_info = f"{idx}.   {user_name} ➥ {total_messages}\n"
         response += user_info 
@@ -188,4 +180,4 @@ __help__ = """
 ⬤ /overall *➥* ᴏᴠᴇʀᴀʟʟ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ ᴜsᴇʀs ᴍᴇssᴀɢᴇs.
 ⬤ /today *➥* ᴛᴏᴅᴀʏ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ ᴜsᴇʀs ᴍᴇssᴀɢᴇs.
 ⬤ /ranking *➥* ᴜsᴇʀs ʀᴀɴᴋɪɴɢ sʏsᴛᴇᴍ.
- """
+"""
