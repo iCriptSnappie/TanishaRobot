@@ -14,7 +14,7 @@ chat_id_env = environ.get("CHAT_ID")
 CHAT_ID = [int(app) for app in chat_id_env.split(",")] if chat_id_env else []
 
 TEXT = environ.get("APPROVED_WELCOME_TEXT", "⬤ ʜᴇʟʟᴏ ʙᴀʙʏ ➥ {mention} ♥︎\n\n⬤ ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ➥ {title}\n\n")
-APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
+APPROVED = environ.get("APPROVED_WELCOME", "off").lower()
 
 # Global variable to track the approve status
 approve_status = APPROVED == "on"
@@ -24,11 +24,12 @@ approve_status = APPROVED == "on"
 async def toggle_autoapprove(client: app, message):
     global approve_status
     command = message.command
-    if len(command) != 2 or command[1] not in ["on", "off"]:
+
+    if len(command) != 2 or command[1].lower() not in ["on", "off"]:
         await message.reply_text("Usage: /joinapproval [on|off]")
         return
-    
-    if command[1] == "on":
+
+    if command[1].lower() == "on":
         approve_status = True
         await message.reply_text("Auto-approve has been enabled.")
     else:
@@ -36,8 +37,11 @@ async def toggle_autoapprove(client: app, message):
         await message.reply_text("Auto-approve has been disabled.")
 
 # Define an event handler for chat join requests
-@app.on_chat_join_request((filters.group | filters.channel) & filters.chat(CHAT_ID) if CHAT_ID else (filters.group | filters.channel))
+@app.on_chat_join_request(filters.group | filters.channel)
 async def autoapprove(client: app, message: ChatJoinRequest):
+    if message.chat.id not in CHAT_ID:
+        return  # Skip if the chat is not in the allowed chat IDs
+
     if not approve_status:
         return  # Exit the function if auto-approve is disabled
 
